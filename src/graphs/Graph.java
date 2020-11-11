@@ -7,6 +7,7 @@ package graphs;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 /**
  *
@@ -145,6 +146,26 @@ public class Graph {
             int y = (int) (Math.cos(Math.toRadians(i)) * r);
             pixel(cx + x, cy + y);
         }
+    }
+
+    // N agono
+    public boolean nAgono(Point c, int n, int l) {
+        if (n < 4 || n > 11) {
+            return false;
+        }
+        ArrayList<Point> list = new ArrayList<>();
+        for (int angulo = 0; angulo < 360; angulo+=(360/n)) {
+            list.add(new Point(
+                    (int) (c.getX() + l * Math.cos(Math.toRadians(angulo))),
+                    (int) (c.getY() + l * Math.sin(Math.toRadians(angulo)))
+            ));
+        }
+        new Polygon(list.toArray(new Point[list.size()])).draw(this);
+        return true;
+    }
+
+    public boolean nAgono(int x, int y, int n, int l) {
+        return nAgono(new Point(x, y), n, l);
     }
 
     /**

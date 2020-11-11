@@ -12,7 +12,7 @@ public class Main {
 
     public static void main(String[] args) {
         int w = 500, h = 500;
-        Graph g = circleTest(); // change the test method for each figure
+        Graph g = nAgonoTest(); // change the test method for each figure
 
         JFrame frame = new JFrame("Pentagon");
         frame.setSize(w, h);
@@ -106,6 +106,12 @@ public class Main {
     private static Graph circleTest() {
         Graph g = new Graph(500, 500, Color.CYAN);
         g.circle(250, 250, 100);
+        return g;
+    }
+
+    private static Graph nAgonoTest() {
+        Graph g = new Graph(500, 500, Color.CYAN);
+        g.nAgono(250, 250, 10, 100);
         return g;
     }
 }
