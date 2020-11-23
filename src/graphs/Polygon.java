@@ -23,6 +23,8 @@ public class Polygon extends BasePolygon {
             for (int i = 0; i < sides * 2; i += 2) {
                 this.vertices[i / 2] = new Point(vertices[i], vertices[i + 1]);
             }
+            calculateBounds();
+            calculateEdges();
         }
     }
 }

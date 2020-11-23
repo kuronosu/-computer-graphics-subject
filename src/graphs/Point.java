@@ -5,11 +5,13 @@
  */
 package graphs;
 
+import java.util.Comparator;
+
 /**
  *
  * @author kuro
  */
-public class Point implements Drawable {
+public class Point implements Drawable, Cloneable {
 
     private int x, y;
     private boolean safe = true;
@@ -41,6 +43,20 @@ public class Point implements Drawable {
     @Override
     public String toString() {
         return "Point(" + x + ", " + y + ")";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Point) {
+            Point p2 = (Point) obj;
+            return this.x == p2.x && this.y == p2.y;
+        }
+        return false;
+    }
+
+    @Override
+    protected Point clone() {
+        return new Point(x, y);
     }
 
     /**
@@ -83,5 +99,13 @@ public class Point implements Drawable {
      */
     public void setSafe(boolean safe) {
         this.safe = safe;
+    }
+
+    public static class CompareByAscendingX implements Comparator<Point> {
+
+        @Override
+        public int compare(Point o1, Point o2) {
+            return o1.x - o2.x;
+        }
     }
 }

@@ -26,6 +26,7 @@ public final class Quadrilateral extends BasePolygon {
         this.valid = width > 0 && height > 0;
         if (valid) {
             calculateVertices();
+            calculateBounds();
         }
     }
 
@@ -51,6 +52,7 @@ public final class Quadrilateral extends BasePolygon {
                 p1, new Point(p1.getX(), p2.getY()),
                 p2, new Point(p2.getX(), p1.getY())
             };
+            calculateBounds();
         }
     }
 
